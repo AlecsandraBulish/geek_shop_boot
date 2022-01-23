@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    container_name: postgres-0
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "bulish"
+      POSTGRES_DB: shop-db
+    ports:
+    - "5432:5432"
+
+
+
+
+

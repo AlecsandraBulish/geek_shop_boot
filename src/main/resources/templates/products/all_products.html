@@ -1,0 +1,102 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+    <title>Good Thymes Virtual Grocery</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous"></head>
+
+<body>
+<div class="container">
+    <div th:replace="~{fragment/header::header}"></div>
+
+
+
+
+    <h1>Products' List</h1>
+    <form  th:method="get" th:action="@{/product/list}" >
+    <div class="mb-3">
+        <label for="title" class="form-label">Product name</label>
+        <input th:name="title" id="title" type="text" class="form-control"
+               placeholder="Name filter">
+    </div>
+        <button type="submit" class="btn btn-primary mb2">Find</button>
+</form>
+    <br>
+    <form  th:method="get" th:action="@{/product/list}" >
+        <div class="mb-3">
+            <label for="minPrice" class="form-label">Minimal price</label>
+            <input th:name="minPrice" id="minPrice" type="number" class="form-control" placeholder="Min Price">
+        </div>
+        <br>
+        <div class="mb-3">
+            <label for="maxPrice" class="form-label">Maximum price</label>
+            <input th:name="maxPrice" id="maxPrice" type="number" class="form-control" placeholder="Max Price">
+            <br>
+            <button type="submit" class="btn btn-primary mb2">Apply</button>
+        </div>
+    </form>
+
+
+
+
+    <div class="container">
+
+        <div class="d-flex">
+        <div class="row row-cols-auto mt-5 mb-5">
+            <div th:if="${products.hasContent()}" th:each="product : ${products.content}" class="card col me-2" style="width: 18rem;">
+                <img th:src="*{'data:image/jpeg;base64,'+{product.imageLink}}" width="150px"  class="card-img-top" alt="..."/>
+                <div class="card-body">
+                    <h5 th:text="${product.title}" class="card-title">Product title</h5>
+                    <small th:text="${'Price: ' + product.coast + ' rub.'}" class="mb-5">Price</small>
+                    <div class="justify-content mt-3">
+                        <a th:href="@{/product/{id}(id=${product.getId()})}" th:text="${'More info'}" class="btn btn-primary mb-2">More info</a>
+                        <a th:href="@{/cart/add-to-cart(id=${product.id})}" class="btn btn-primary mb-2">Add to cart</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div th:unless="${products.hasContent()}">
+                <h3 th:text="${'No Data'}">No Data</h3>
+            </div>
+        </div>
+        <a sec:authorize="hasAnyRole('ADMIN','MANAGER')" th:href="@{/product/new}" class="btn btn-primary mb-2">ADD</a>
+    </div>
+    <div class="col-sm-2">
+        Total rows: [[${totalItems}]]
+    </div>
+
+    <div th:if="${products.totalPages > 1}">
+        <nav aria-label="Page navigation example">
+
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" th:if="${products.getNumber() > 0}" th:href="@{/product/list(page=${products.number}
+                    )}">Previous</a>
+                    <span th:unless="${products.number > 0}" class="page-link disabled">Pre</span>
+
+                </li>
+                <li th:each="num: ${#numbers.sequence(1,products.totalPages)}" th:classappend="${num == products.number +1 } ? 'active'"
+                    class="page-item">
+                    <a class="page-link" th:href="@{/product/list(page=${num})}">[[${num}]]</a>
+
+                </li>
+
+                <li class="page-item">
+                <a class="page-link" th:if="${products.getNumber() + 1 < products.totalPages}" th:href="@{/product/list(page=${products.number + 2}
+                )}" >Next</a>
+                <span th:unless="${products.getNumber() + 1 < products.totalPages}" class="page-link disabled">Next</span>
+                </li>
+                 <li class="page-item">
+                <a class="page-link" th:if="${products.getNumber() + 1 < products.totalPages}" th:href="@{/product/list(page=${products.totalPages}
+                )} " >Last</a>
+                <span th:unless="${products.getNumber() + 1 < products.totalPages}" class="page-link disabled" >Last</span>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+</div>
+</body>
+
+</html>
