@@ -7,6 +7,7 @@ import ru.bulish.spring.geek_shop_boot.repository.CategoryRepository;
 import ru.bulish.spring.geek_shop_boot.service.CategoryService;
 
 import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 import java.util.List;
 
 
@@ -17,16 +18,19 @@ public class CategoryServiceImpl implements CategoryService {
     private  CategoryRepository categoryRepository;
 
     @Override
+    @Transactional
     public List<Category> findAll() {
         return categoryRepository.findAll();
     }
 
     @Override
+    @Transactional
     public Category findById(Long id) {
         return categoryRepository.findById(id).orElseThrow(EntityNotFoundException::new);
     }
 
     @Override
+    @Transactional
     public void save(Category category) {
         categoryRepository.save(category);
     }
