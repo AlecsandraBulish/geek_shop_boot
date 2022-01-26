@@ -62,9 +62,6 @@
         </div>
         <a sec:authorize="hasAnyRole('ADMIN','MANAGER')" th:href="@{/product/new}" class="btn btn-primary mb-2">ADD</a>
     </div>
-    <div class="col-sm-2">
-        Total rows: [[${totalItems}]]
-    </div>
 
     <div th:if="${products.totalPages > 1}">
         <nav aria-label="Page navigation example">

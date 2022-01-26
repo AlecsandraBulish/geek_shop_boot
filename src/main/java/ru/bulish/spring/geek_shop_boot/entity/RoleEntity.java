@@ -6,8 +6,12 @@ import org.hibernate.Hibernate;
 import javax.persistence.*;
 import java.util.Objects;
 
-@Getter
-@Setter
+/**
+ * Class Entity Role associated with the table in the DB
+ * @author Sorokina
+ * @version 1.0
+ */
+@Data
 @ToString
 @AllArgsConstructor
 @Entity

@@ -12,6 +12,11 @@ import javax.persistence.criteria.Root;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Class Specification for adding predicates in order to filter on exact params
+ * @author Sorokina
+ * @version 1.0
+ */
 @RequiredArgsConstructor
 public class ProductSpecificationPredicates implements Specification<Product> {
     private final ProductSearchConditional productSearchConditional;

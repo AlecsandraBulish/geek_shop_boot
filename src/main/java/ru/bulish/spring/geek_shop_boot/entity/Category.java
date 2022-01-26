@@ -8,10 +8,13 @@ import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 import java.util.Set;
 
-@Getter
-@Setter
+/**
+ * Class Entity Category associated with the table in the DB
+ * @author Sorokina
+ * @version 1.0
+ */
 @ToString
-@Builder
+@Data
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
