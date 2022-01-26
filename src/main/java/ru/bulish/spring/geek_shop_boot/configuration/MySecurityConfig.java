@@ -10,14 +10,30 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import ru.bulish.spring.geek_shop_boot.component.ShoppingCart;
+import ru.bulish.spring.geek_shop_boot.service.ServiceProduct;
 
-
+/**
+ * Class Security Configuration
+ * @author spring security
+ * @see WebSecurityConfigurerAdapter
+ */
 @RequiredArgsConstructor
 @EnableWebSecurity
 public class MySecurityConfig extends WebSecurityConfigurerAdapter {
 
+    /**
+     * Field userDetailsService keeps details about each user
+     * @see UserDetailsService
+     */
     private final UserDetailsService userDetailsService;
 
+    /**
+     * Method limits access to specific url
+     * @param http is parameter that coming from url and then is used for checking if specific user has access to
+     * specific url or don't
+     * @see HttpSecurity
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -34,11 +50,19 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter {
                 .defaultSuccessUrl("/product/list");
     }
 
+    /**
+     * Method create a bean of BCryptPasswordEncoder
+     * @see BCryptPasswordEncoder
+     */
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    /**
+     * Method create a bean of DaoAuthenticationProvider
+     * @see DaoAuthenticationProvider
+     */
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();

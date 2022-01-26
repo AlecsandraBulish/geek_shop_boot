@@ -9,7 +9,7 @@ public class GeekShopBootApplication {
 
     public static void main(String[] args) {
         Flyway flyway = Flyway.configure()
-                .dataSource("jdbc:postgresql://localhost:5432/shop-db", "postgres", "bulish")
+                .dataSource("jdbc:postgresql://192.168.99.100:5432/shop", "postgres", "bulish")
                 .load();
         flyway.migrate();
         SpringApplication.run(GeekShopBootApplication.class, args);

@@ -1,6 +1,7 @@
 package ru.bulish.spring.geek_shop_boot.security;
 
 import lombok.AllArgsConstructor;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -16,6 +17,12 @@ import ru.bulish.spring.geek_shop_boot.repository.UserRepository;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
+
+/**
+ * Class UserDetails checks each user full information
+ * @author Spring Secutiry
+ * @see UserDetailsService
+ */
 @Component
 @AllArgsConstructor
 public class UserDetailsServiceImpl implements UserDetailsService {

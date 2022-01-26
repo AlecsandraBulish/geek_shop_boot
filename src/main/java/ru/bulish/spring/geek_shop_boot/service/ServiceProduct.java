@@ -11,7 +11,11 @@ import ru.bulish.spring.geek_shop_boot.entity.ProductSearchConditional;
 import java.util.List;
 import java.util.Optional;
 
-
+/**
+ * Interface Service layer for Product to implement business logic
+ * @author Sorokina
+ * @see ru.bulish.spring.geek_shop_boot.service.impl.ServiceProductImpl
+ */
 @Service
 public interface ServiceProduct {
     List<Product> getAllProducts();

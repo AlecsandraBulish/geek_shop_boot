@@ -2,6 +2,7 @@ package ru.bulish.spring.geek_shop_boot.entity;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.Hibernate;
 
@@ -12,8 +13,13 @@ import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 import java.util.Set;
 
-
+/**
+ * Class Entity Product associated with the table in the DB
+ * @author Sorokina
+ * @version 1.0
+ */
 @Entity
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class Product {
@@ -58,43 +64,5 @@ public class Product {
         return getClass().hashCode();
     }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public Integer getCoast() {
-        return coast;
-    }
-
-    public void setCoast(Integer coast) {
-        this.coast = coast;
-    }
-
-    public String getImageLink() {
-        return imageLink;
-    }
-
-    public void setImageLink(String imageLink) {
-        this.imageLink = imageLink;
-    }
-
-    public Set<Category> getCategories() {
-        return categories;
-    }
-
-    public void setCategories(Set<Category> categories) {
-        this.categories = categories;
-    }
 }

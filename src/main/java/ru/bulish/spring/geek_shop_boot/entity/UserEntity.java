@@ -9,9 +9,12 @@ import javax.validation.constraints.NotBlank;
 import java.util.Collection;
 import java.util.Objects;
 
-
-@Getter
-@Setter
+/**
+ * Class Entity User associated with the table in the DB
+ * @author Sorokina
+ * @version 1.0
+ */
+@Data
 @ToString
 @AllArgsConstructor
 @Entity

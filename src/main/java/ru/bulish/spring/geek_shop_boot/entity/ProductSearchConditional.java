@@ -5,6 +5,11 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/**
+ * Class ProductSearchConditional keeps fields which used for filtering and pagination
+ * @author Sorokina
+ * @version 1.0
+ */
 @Data
 @Builder
 @NoArgsConstructor
@@ -18,9 +23,4 @@ public class ProductSearchConditional {
     private Integer minPrice;
     private Integer maxPrice;
 
-
-
-    public int getPageInx() {
-        return pageInx;
-    }
 }

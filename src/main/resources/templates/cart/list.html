@@ -10,16 +10,16 @@
 <div class="container mt-15 mb-15">
     <div th:replace="~{fragment/header::header}">Header</div>
 
-    <h1>Корзина</h1>
+    <h1>The Cart</h1>
 
     <div class="container">
         <table th:if="${shoppingCart.getCount() > 0}" class="table">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Наименование</th>
-                    <th scope="col">Количество</th>
-                    <th scope="col">Цена</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
                     <th scope="col"></th>
                 </tr>
             </thead>
@@ -36,7 +36,7 @@
             </tbody>
         </table>
 
-        <h5 th:unless="${shoppingCart.getCount() > 0}">Добавьте товар в корзину</h5>
+        <h5 th:unless="${shoppingCart.getCount() > 0}">Add product to the cart</h5>
     </div>
 </div>
 
