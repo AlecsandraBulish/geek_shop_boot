@@ -6,8 +6,8 @@ services:
     container_name: postgres-0
     environment:
       POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "bulish"
-      POSTGRES_DB: shop-db
+      POSTGRES_PASSWORD: "password"
+      POSTGRES_DB: shop
     ports:
     - "5432:5432"
 
